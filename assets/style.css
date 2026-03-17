@@ -223,6 +223,7 @@ body {
     border-radius: 6px;
     font-size: 14px;
     width:100%;
+    text-align: center;
 }
 
 .downloadBtn i {
