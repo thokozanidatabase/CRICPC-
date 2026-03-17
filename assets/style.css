@@ -213,3 +213,22 @@ body {
     font-size: 13px;
     color: #6b7280;
 }
+.downloadBtn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #0a1f44;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.downloadBtn i {
+    margin-right: 5px;
+}
+
+.downloadBtn:hover {
+    background: #142f66;
+}
+
