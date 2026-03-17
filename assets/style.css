@@ -1,1 +1,215 @@
 
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+    display: flex;
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 70px;
+    height: 100vh;
+    background: #111827;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: fixed;
+}
+
+.sidebar i {
+    color: #9ca3af;
+    font-size: 20px;
+    margin: 25px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar i:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Topbar */
+.topbar {
+    position: fixed;
+    left: 70px;
+    top: 0;
+    width: calc(100% - 70px);
+    height: 70px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.topbar h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 70px;
+    margin-top: 90px;
+    padding: 20px 40px;
+    width: 100%;
+}
+
+/* Upload Box */
+.upload-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.upload-box input[type="file"] {
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.upload-box input[type="text"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    flex: 1;
+}
+
+.upload-box button {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-box button:hover {
+    background: #1d4ed8;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.caption {
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Delete Button */
+.deleteBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover .deleteBtn {
+    opacity: 1;
+}
+
+.deleteBtn:hover {
+    background: #dc2626;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+
+    .sidebar {
+        display: none;
+    }
+
+    .topbar {
+        left: 0;
+        width: 100%;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+}
+/* File Upload Styling */
+.file-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.file-btn {
+    background: linear-gradient(135deg, #6366f1, #2563eb);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+#file-name {
+    font-size: 13px;
+    color: #6b7280;
+}
