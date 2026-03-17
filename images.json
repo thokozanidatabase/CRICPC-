@@ -1,5 +1,4 @@
 [
-   
        { "file": "52.jpg", "caption": "kindly wait" },
        { "file": "53.jpg", "caption": "kindly wait" },
        { "file": "54.jpg", "caption": "kindly wait" },
@@ -30,7 +29,7 @@
   { "file": "2.jpg", "caption": "" },
   { "file": "3.jpg", "caption": "kindly wait" },
   { "file": "4.jpg", "caption": "kindly wait" },
-  { "file": "5.jpg", "caption": "kindly wait" },
+  { "file": "5.jpg", "caption": "kindly wait" }
 
 ]
 
