@@ -1,89 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>CRIPC BRAINSTORMING LOGOS</title>
-<link rel="stylesheet" href="assets/style.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
-<body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Sidebar -->
-<div class="sidebar">
-     <a href="https://ict-portfolio-mu.vercel.app/"><i class="fas fa-home"></i></a>
-    <i class="fas fa-compass"></i>
-    <i class="fas fa-plus"></i>
-    <i class="fas fa-heart"></i>
-    <i class="fas fa-user"></i>
-</div>
+<title>CRIPC NEXUS</title>
 
-<!-- Topbar -->
-<div class="topbar">
-    <h1>CRIPC LOGOS</h1>
-</div>
+<style>
 
-<!-- Main Content -->
-<div class="main-content">
-    <div class="grid" id="grid"></div>
-</div>
+/* =========================
+   GLOBAL
+========================= */
 
-<script>
-$(document).ready(function(){
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    function loadImages() {
-        $.getJSON("images.json", function(data){
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f1eb;
+    color:#3c2315;
+    overflow:hidden;
+}
 
-            $("#grid").empty();
+/* =========================
+   SCROLLBAR
+========================= */
 
-            $.each(data, function(index, item){
+::-webkit-scrollbar{
+    width:10px;
+}
 
-                let card = `
-                    <div class="card">
-                        <img src="images/${item.file}" alt="">
-                        <div class="caption">${item.caption}</div>
+::-webkit-scrollbar-track{
+    background:#f5f1eb;
+}
 
-                        <!-- Download Button -->
-                        <a href="images/${item.file}" download class="downloadBtn">
-                            <i class="fas fa-download"></i> Download
-                        </a>
-                    </div>
-                `;
+::-webkit-scrollbar-thumb{
+    background:#da9b42;
+    border-radius:20px;
+}
 
-                $("#grid").append(card);
-            });
-        });
+/* =========================
+   LAYOUT
+========================= */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:240px;
+    background:#693213;
+    color:white;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 25px rgba(163, 135, 135, 0.2);
+}
+
+.logo{
+    text-align:left;
+    margin-bottom:30px;
+}
+
+.logo img{
+    width:150px;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.nav button{
+    padding:18px;
+    border:none;
+    background:none;
+    color:white;
+    text-align:left;
+    border-radius:18px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav button:hover{
+    background:#da9b42;
+    color:#3c2315;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    flex:1;
+    overflow-y:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:white;
+    padding:25px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #e6d6c4;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header h1{
+    font-size:40px;
+    margin-bottom:5px;
+}
+
+.header p{
+    color:#8c6a4a;
+}
+
+.search-box input{
+    width:300px;
+    padding:15px 20px;
+    border-radius:16px;
+    border:1px solid #d8c1a5;
+    outline:none;
+    font-size:15px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    padding:40px;
+}
+
+/* =========================
+   CATEGORY SECTION
+========================= */
+
+.category-section{
+    margin-bottom:60px;
+}
+
+.category-title{
+    font-size:32px;
+    margin-bottom:25px;
+    color:#3c2315;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:25px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.4s;
+    border:1px solid #eadac7;
+    
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img,
+.card video{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    font-size:18px;
+    color:#3c2315;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden{
+    display:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:220px;
     }
 
-    loadImages();
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
 
-    // Upload Image
-    $("#uploadBtn").click(function(){
+    .search-box input{
+        width:100%;
+    }
+}
 
-        let file = $("#imageFile")[0].files[0];
-        let caption = $("#caption").val();
+</style>
 
-        let formData = new FormData();
-        formData.append("image", file);
-        formData.append("caption", caption);
+</head>
 
-        $.ajax({
-            url: "upload.php",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(){
-                loadImages();
-                $("#caption").val("");
-                $("#imageFile").val("");
-            }
-        });
+<body>
 
-    });
+<div class="container">
 
-});
-</script>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+        <div class="logo">
+
+            <img src="logo/cripc1.png" alt="Logo">
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav class="nav">
+
+            <button onclick="showSection('images')">
+                Images
+            </button>
+
+            <button onclick="showSection('videos')">
+                Videos
+            </button>
+
+            <button onclick="showSection('designs')">
+                Designs
+            </button>
+
+            <button onclick="showSection('banners')">
+                Banners
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div>
+
+                <h1>CRIPC NEXUS</h1>
+
+                <p>
+                    the central digital platform where all CRIPC media resources are connected and managed
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search here..."
+                >
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- IMAGES -->
+            <div id="images"> </div>
+
+            <!-- VIDEOS -->
+            <div id="videos" class="hidden"></div>
+
+            <!-- DESIGNS -->
+            <div id="designs" class="hidden"></div>
+
+            <!-- BANNERS -->
+            <div id="banners" class="hidden"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
