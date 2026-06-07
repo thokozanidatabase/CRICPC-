@@ -1,8 +1,8 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,7 +24,7 @@ body{
     font-family:Arial, sans-serif;
     background:#f5f1eb;
     color:#3c2315;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 /* =========================
@@ -64,7 +64,7 @@ body{
     padding:30px;
     display:flex;
     flex-direction:column;
-    box-shadow:0 0 25px rgba(163, 135, 135, 0.2);
+    box-shadow:0 0 25px rgba(0,0,0,0.2);
 }
 
 .logo{
@@ -74,6 +74,8 @@ body{
 
 .logo img{
     width:150px;
+    max-width:100%;
+    height:auto;
 }
 
 /* =========================
@@ -111,6 +113,7 @@ body{
 .main{
     flex:1;
     overflow-y:auto;
+    min-width:0;
 }
 
 /* =========================
@@ -130,7 +133,7 @@ body{
 }
 
 .header h1{
-    font-size:40px;
+    font-size:clamp(22px, 3vw, 40px);
     margin-bottom:5px;
 }
 
@@ -164,9 +167,8 @@ body{
 }
 
 .category-title{
-    font-size:32px;
+    font-size:clamp(20px, 2.5vw, 32px);
     margin-bottom:25px;
-    color:#3c2315;
 }
 
 /* =========================
@@ -175,7 +177,7 @@ body{
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
     gap:25px;
 }
 
@@ -188,20 +190,20 @@ body{
     border-radius:20px;
     overflow:hidden;
     box-shadow:0 5px 20px rgba(0,0,0,0.08);
-    transition:0.4s;
+    transition:0.3s;
     border:1px solid #eadac7;
-    
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-6px);
 }
 
 .card img,
 .card video{
     width:100%;
-    height:230px;
+    aspect-ratio:4/3;
     object-fit:cover;
+    display:block;
 }
 
 .card-content{
@@ -210,7 +212,6 @@ body{
 
 .card-content h3{
     font-size:18px;
-    color:#3c2315;
 }
 
 /* =========================
@@ -225,25 +226,101 @@ body{
    RESPONSIVE
 ========================= */
 
-@media(max-width:900px){
+/* Tablets */
+@media (max-width: 992px){
 
     .sidebar{
+        width:200px;
+        padding:20px;
+    }
+
+    .search-box input{
         width:220px;
+    }
+
+    .content{
+        padding:25px;
+    }
+
+    .grid{
+        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+
+    .container{
+        flex-direction:column;
+        height:auto;
+    }
+
+    .sidebar{
+        width:100%;
+        padding:15px;
+    }
+
+    .logo{
+        text-align:center;
+        margin-bottom:15px;
+    }
+
+    .logo img{
+        width:100px;
+    }
+
+    .nav{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+    }
+
+    .nav button{
+        flex:1 1 45%;
+        text-align:center;
+        padding:12px;
+        font-size:14px;
     }
 
     .header{
         flex-direction:column;
         align-items:flex-start;
-        gap:20px;
+        gap:15px;
+        padding:20px;
     }
 
     .search-box input{
         width:100%;
     }
+
+    .content{
+        padding:20px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px){
+
+    .nav button{
+        flex:1 1 100%;
+        font-size:13px;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+
+    .card-content{
+        padding:15px;
+    }
 }
 
 </style>
-
 </head>
 
 <body>
@@ -253,83 +330,38 @@ body{
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-        <!-- LOGO -->
         <div class="logo">
-
             <img src="logo/cripc1.png" alt="Logo">
-
         </div>
 
-
-        <!-- NAVIGATION -->
         <nav class="nav">
-
-            <button onclick="showSection('images')">
-                Images
-            </button>
-
-            <button onclick="showSection('videos')">
-                Videos
-            </button>
-
-            <button onclick="showSection('designs')">
-                Designs
-            </button>
-
-            <button onclick="showSection('banners')">
-                Banners
-            </button>
-
+            <button onclick="showSection('images')">Images</button>
+            <button onclick="showSection('videos')">Videos</button>
+            <button onclick="showSection('designs')">Designs</button>
+            <button onclick="showSection('banners')">Banners</button>
         </nav>
 
     </aside>
 
-
-
     <!-- MAIN -->
     <main class="main">
 
-        <!-- HEADER -->
         <header class="header">
-
             <div>
-
                 <h1>CRIPC NEXUS</h1>
-
-                <p>
-                    the central digital platform where all CRIPC media resources are connected and managed
-                </p>
-
+                <p>Central digital media platform</p>
             </div>
 
-
-            <!-- SEARCH -->
             <div class="search-box">
-
-                <input
-                    type="text"
-                    placeholder="Search here..."
-                >
-
+                <input type="text" placeholder="Search here...">
             </div>
-
         </header>
 
-
-
-        <!-- CONTENT -->
         <section class="content">
 
-            <!-- IMAGES -->
-            <div id="images"> </div>
-
-            <!-- VIDEOS -->
+            <div id="images"></div>
             <div id="videos" class="hidden"></div>
-
-            <!-- DESIGNS -->
             <div id="designs" class="hidden"></div>
-
-            <!-- BANNERS -->
             <div id="banners" class="hidden"></div>
 
         </section>
@@ -342,3 +374,4 @@ body{
 
 </body>
 </html>
+```
