@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "title": "City Lights",
-    "image": "images/city1.jpg"
+  
+    "image": "../images/1.jpg"
   },
   {
     "id": 2,
-    "title": "Mountain View",
-    "image": "images/mountain1.jpg"
+    
+    "image": "../images/2.jpg"
   },
   {
     "id": 3,
-    "title": "Ocean Wave",
-    "image": "images/ocean1.jpg"
+   
+    "image": "../images/3.jpg"
   }
 ]
