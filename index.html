@@ -21,355 +21,246 @@
 
 body{
     font-family:Arial, sans-serif;
-    background:#f5f1eb;
-    color:#3c2315;
+    background:#f5f5f5;
     overflow-x:hidden;
-}
-
-/* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#f5f1eb;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#da9b42;
-    border-radius:20px;
 }
 
 /* =========================
    LAYOUT
 ========================= */
 
-.container{
+.app{
     display:flex;
     height:100vh;
 }
 
 /* =========================
-   SIDEBAR
+   LEFT SIDEBAR (Pinterest style)
 ========================= */
 
 .sidebar{
-    width:240px;
-    background:#693213;
-    color:white;
-    padding:30px;
+    width:70px;
+    background:#ffffff;
+    border-right:1px solid #e6e6e6;
     display:flex;
     flex-direction:column;
-    box-shadow:0 0 25px rgba(0,0,0,0.2);
+    align-items:center;
+    padding:15px 0;
+    gap:20px;
 }
 
-.logo{
-    text-align:left;
-    margin-bottom:30px;
+.sidebar img{
+    width:35px;
+    height:35px;
+    border-radius:10px;
 }
 
-.logo img{
-    width:150px;
-    max-width:100%;
-    height:auto;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-
-.nav{
+.icon{
+    width:40px;
+    height:40px;
     display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.nav button{
-    padding:18px;
-    border:none;
-    background:none;
-    color:white;
-    text-align:left;
-    border-radius:18px;
-    font-size:16px;
-    font-weight:bold;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
     cursor:pointer;
-    transition:0.3s;
+    transition:0.2s;
+    font-size:18px;
 }
 
-.nav button:hover{
-    background:#da9b42;
-    color:#3c2315;
+.icon:hover{
+    background:#efefef;
 }
 
 /* =========================
-   MAIN
+   MAIN AREA
 ========================= */
 
 .main{
     flex:1;
-    overflow-y:auto;
-    min-width:0;
+    display:flex;
+    flex-direction:column;
 }
 
 /* =========================
-   HEADER
+   TOP BAR
 ========================= */
 
-.header{
-    background:white;
-    padding:25px 40px;
+.topbar{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid #e6d6c4;
+    justify-content:space-between;
+    padding:12px 20px;
+    background:#fff;
+    border-bottom:1px solid #e6e6e6;
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:10;
 }
 
-.header h1{
-    font-size:clamp(22px, 3vw, 40px);
-    margin-bottom:5px;
+.search{
+    flex:1;
+    display:flex;
+    justify-content:center;
 }
 
-.header p{
-    color:#8c6a4a;
-}
-
-.search-box input{
-    width:300px;
-    padding:15px 20px;
-    border-radius:16px;
-    border:1px solid #d8c1a5;
+.search input{
+    width:60%;
+    max-width:700px;
+    padding:12px 18px;
+    border-radius:25px;
+    border:none;
+    background:#efefef;
     outline:none;
-    font-size:15px;
 }
 
 /* =========================
-   CONTENT
+   GRID (Pinterest masonry)
 ========================= */
 
-.content{
-    padding:40px;
+.feed{
+    padding:20px;
+    column-count:5;
+    column-gap:15px;
 }
 
-/* =========================
-   CATEGORY SECTION
-========================= */
-
-.category-section{
-    margin-bottom:60px;
-}
-
-.category-title{
-    font-size:clamp(20px, 2.5vw, 32px);
-    margin-bottom:25px;
-}
-
-/* =========================
-   GRID
-========================= */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-    gap:25px;
-}
+/* responsive columns */
+@media(max-width:1400px){ .feed{ column-count:4; } }
+@media(max-width:1100px){ .feed{ column-count:3; } }
+@media(max-width:800px){ .feed{ column-count:2; } }
+@media(max-width:500px){ .feed{ column-count:1; } }
 
 /* =========================
    CARD
 ========================= */
 
 .card{
-    background:white;
-    border-radius:20px;
+    background:#fff;
+    margin-bottom:15px;
+    border-radius:18px;
     overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    position:relative;
+    break-inside:avoid;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
     transition:0.3s;
-    border:1px solid #eadac7;
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:scale(1.02);
 }
 
-.card img,
-.card video{
+/* image */
+.card img{
     width:100%;
-    aspect-ratio:4/3;
-    object-fit:cover;
     display:block;
 }
 
-.card-content{
-    padding:20px;
+/* hover save button */
+.save{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#e60023;
+    color:#fff;
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:12px;
+    opacity:0;
+    transition:0.3s;
 }
 
-.card-content h3{
-    font-size:18px;
+.card:hover .save{
+    opacity:1;
+}
+
+/* caption */
+.caption{
+    padding:10px;
+    font-size:14px;
+    color:#333;
 }
 
 /* =========================
-   HIDDEN
+   MOBILE FIX
 ========================= */
 
-.hidden{
-    display:none;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-/* Tablets */
-@media (max-width: 992px){
+@media(max-width:768px){
 
     .sidebar{
-        width:200px;
-        padding:20px;
+        width:60px;
     }
 
-    .search-box input{
-        width:220px;
-    }
-
-    .content{
-        padding:25px;
-    }
-
-    .grid{
-        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    }
-}
-
-/* Mobile */
-@media (max-width: 768px){
-
-    .container{
-        flex-direction:column;
-        height:auto;
-    }
-
-    .sidebar{
-        width:100%;
-        padding:15px;
-    }
-
-    .logo{
-        text-align:center;
-        margin-bottom:15px;
-    }
-
-    .logo img{
-        width:100px;
-    }
-
-    .nav{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:10px;
-    }
-
-    .nav button{
-        flex:1 1 45%;
-        text-align:center;
-        padding:12px;
-        font-size:14px;
-    }
-
-    .header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:15px;
-        padding:20px;
-    }
-
-    .search-box input{
-        width:100%;
-    }
-
-    .content{
-        padding:20px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-
-/* Small phones */
-@media (max-width: 480px){
-
-    .nav button{
-        flex:1 1 100%;
-        font-size:13px;
-    }
-
-    .header h1{
-        font-size:20px;
-    }
-
-    .card-content{
-        padding:15px;
+    .search input{
+        width:90%;
     }
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
 
-        <div class="logo">
-            <img src="logo/cripc1.png" alt="Logo">
-        </div>
+        <div class="icon">🏠</div>
+        <div class="icon">🔔</div>
+        <div class="icon">➕</div>
+        <div class="icon">📁</div>
+        <div class="icon">⚙️</div>
 
-        <nav class="nav">
-            <button onclick="showSection('images')">Images</button>
-            <button onclick="showSection('videos')">Videos</button>
-            <button onclick="showSection('designs')">Designs</button>
-            <button onclick="showSection('banners')">Banners</button>
-        </nav>
-
-    </aside>
+    </div>
 
     <!-- MAIN -->
-    <main class="main">
+    <div class="main">
 
-        <header class="header">
-            <div>
-                <h1>CRIPC NEXUS</h1>
-                <p>Central digital media platform</p>
+        <!-- TOP BAR -->
+        <div class="topbar">
+
+            <strong>CRIPC</strong>
+
+            <div class="search">
+                <input type="text" placeholder="Search">
             </div>
 
-            <div class="search-box">
-                <input type="text" placeholder="Search here...">
+            <div class="icon">👤</div>
+
+        </div>
+
+        <!-- FEED -->
+        <div class="feed">
+
+            <div class="card">
+                <div class="save">Save</div>
+                <img src="https://i.pinimg.com/736x/xx.jpg">
+                <div class="caption">Creative sketch artwork</div>
             </div>
-        </header>
 
-        <section class="content">
+            <div class="card">
+                <div class="save">Save</div>
+                <img src="https://i.pinimg.com/736x/xx.jpg">
+                <div class="caption">Dark textured background design</div>
+            </div>
 
-            <div id="images"></div>
-            <div id="videos" class="hidden"></div>
-            <div id="designs" class="hidden"></div>
-            <div id="banners" class="hidden"></div>
+            <div class="card">
+                <div class="save">Save</div>
+                <img src="https://i.pinimg.com/736x/xx.jpg">
+                <div class="caption">Public speaker event photo</div>
+            </div>
 
-        </section>
+            <div class="card">
+                <div class="save">Save</div>
+                <img src="https://i.pinimg.com/736x/xx.jpg">
+                <div class="caption">Abstract digital art figure</div>
+            </div>
 
-    </main>
+        </div>
+
+    </div>
 
 </div>
-
-<script src="js/app.js"></script>
 
 </body>
 </html>
