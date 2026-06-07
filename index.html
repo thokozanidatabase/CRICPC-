@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CRIPC NEXUS</title>
 
 <style>
@@ -28,23 +26,6 @@ body{
 }
 
 /* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#f5f1eb;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#da9b42;
-    border-radius:20px;
-}
-
-/* =========================
    LAYOUT
 ========================= */
 
@@ -64,39 +45,30 @@ body{
     padding:30px;
     display:flex;
     flex-direction:column;
-    box-shadow:0 0 25px rgba(0,0,0,0.2);
-}
-
-.logo{
-    text-align:left;
-    margin-bottom:30px;
+    transition:0.3s;
 }
 
 .logo img{
     width:150px;
     max-width:100%;
-    height:auto;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
-
+/* NAV */
 .nav{
     display:flex;
     flex-direction:column;
     gap:15px;
+    margin-top:20px;
 }
 
 .nav button{
-    padding:18px;
+    padding:15px;
     border:none;
     background:none;
     color:white;
     text-align:left;
-    border-radius:18px;
+    border-radius:12px;
     font-size:16px;
-    font-weight:bold;
     cursor:pointer;
     transition:0.3s;
 }
@@ -107,18 +79,27 @@ body{
 }
 
 /* =========================
+   HAMBURGER BUTTON
+========================= */
+
+.burger{
+    display:none;
+    font-size:28px;
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+
+/* =========================
    MAIN
 ========================= */
 
 .main{
     flex:1;
     overflow-y:auto;
-    min-width:0;
 }
-
-/* =========================
-   HEADER
-========================= */
 
 .header{
     background:white;
@@ -126,201 +107,96 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid #e6d6c4;
     position:sticky;
     top:0;
-    z-index:100;
-}
-
-.header h1{
-    font-size:clamp(22px, 3vw, 40px);
-    margin-bottom:5px;
-}
-
-.header p{
-    color:#8c6a4a;
 }
 
 .search-box input{
     width:300px;
-    padding:15px 20px;
-    border-radius:16px;
-    border:1px solid #d8c1a5;
-    outline:none;
-    font-size:15px;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
 
-/* =========================
-   CONTENT
-========================= */
+/* CONTENT */
 
 .content{
-    padding:40px;
+    padding:30px;
 }
 
-/* =========================
-   CATEGORY SECTION
-========================= */
-
-.category-section{
-    margin-bottom:60px;
-}
-
-.category-title{
-    font-size:clamp(20px, 2.5vw, 32px);
-    margin-bottom:25px;
-}
-
-/* =========================
-   GRID
-========================= */
+/* GRID */
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:20px;
 }
-
-/* =========================
-   CARD
-========================= */
 
 .card{
     background:white;
-    border-radius:20px;
+    border-radius:15px;
     overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-    transition:0.3s;
-    border:1px solid #eadac7;
 }
 
-.card:hover{
-    transform:translateY(-6px);
-}
-
-.card img,
-.card video{
+.card img{
     width:100%;
     aspect-ratio:4/3;
     object-fit:cover;
-    display:block;
 }
 
-.card-content{
-    padding:20px;
-}
-
-.card-content h3{
-    font-size:18px;
-}
-
-/* =========================
-   HIDDEN
-========================= */
+/* HIDDEN */
 
 .hidden{
     display:none;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE MENU (BURGER)
 ========================= */
 
-/* Tablets */
-@media (max-width: 992px){
-
-    .sidebar{
-        width:200px;
-        padding:20px;
-    }
-
-    .search-box input{
-        width:220px;
-    }
-
-    .content{
-        padding:25px;
-    }
-
-    .grid{
-        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    }
-}
-
-/* Mobile */
-@media (max-width: 768px){
+@media (max-width:768px){
 
     .container{
         flex-direction:column;
-        height:auto;
     }
 
     .sidebar{
         width:100%;
         padding:15px;
+        flex-direction:column;
     }
 
-    .logo{
-        text-align:center;
-        margin-bottom:15px;
-    }
-
-    .logo img{
-        width:100px;
+    .burger{
+        display:block;
     }
 
     .nav{
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:10px;
+        display:none;
+        flex-direction:column;
+        margin-top:10px;
+    }
+
+    .sidebar.active .nav{
+        display:flex;
     }
 
     .nav button{
-        flex:1 1 45%;
         text-align:center;
-        padding:12px;
-        font-size:14px;
     }
 
     .header{
         flex-direction:column;
-        align-items:flex-start;
         gap:15px;
-        padding:20px;
+        align-items:flex-start;
     }
 
     .search-box input{
         width:100%;
     }
-
-    .content{
-        padding:20px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-}
-
-/* Small phones */
-@media (max-width: 480px){
-
-    .nav button{
-        flex:1 1 100%;
-        font-size:13px;
-    }
-
-    .header h1{
-        font-size:20px;
-    }
-
-    .card-content{
-        padding:15px;
-    }
 }
 
 </style>
+
 </head>
 
 <body>
@@ -328,7 +204,9 @@ body{
 <div class="container">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
+
+        <button class="burger" onclick="toggleMenu()">☰</button>
 
         <div class="logo">
             <img src="logo/cripc1.png" alt="Logo">
@@ -347,13 +225,10 @@ body{
     <main class="main">
 
         <header class="header">
-            <div>
-                <h1>CRIPC NEXUS</h1>
-                <p>Central digital media platform</p>
-            </div>
+            <h1>CRIPC NEXUS</h1>
 
             <div class="search-box">
-                <input type="text" placeholder="Search here...">
+                <input type="text" placeholder="Search...">
             </div>
         </header>
 
@@ -370,8 +245,11 @@ body{
 
 </div>
 
-<script src="js/app.js"></script>
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
-```
