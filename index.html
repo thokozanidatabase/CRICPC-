@@ -38,32 +38,48 @@ body{
 /* =========================
    SIDEBAR (DESKTOP)
 ========================= */
-
 .sidebar{
     width:70px;
     background:#ffffff;
-    border-right:1px solid #e6e6e6;
+    border-right:1px solid #e8ddd1;
     display:flex;
     flex-direction:column;
     align-items:center;
     padding:15px 0;
-    gap:20px;
+    gap:18px;
 }
 
 .icon{
-    width:40px;
-    height:40px;
+    width:48px;
+    height:48px;
     display:flex;
-    align-items:center;
     justify-content:center;
-    border-radius:12px;
+    align-items:center;
+    border-radius:14px;
     cursor:pointer;
-    transition:0.2s;
-    font-size:18px;
+    transition:all .3s ease;
 }
 
 .icon:hover{
-    background:#efefef;
+    background:#f4ece4;
+}
+
+.icon.active{
+    background:#efe2d4;
+}
+
+.material-symbols-rounded{
+    font-size:28px;
+    color:#6b4b36;   /* lighter version of #3c2315 */
+    transition:.3s;
+}
+
+.icon:hover .material-symbols-rounded{
+    color:#3c2315;
+}
+
+.icon.active .material-symbols-rounded{
+    color:#3c2315;
 }
 
 /* =========================
