@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="logo/cripc1.png">
 
 <title>CRIPC NEXUS</title>
 
@@ -38,48 +37,32 @@ body{
 /* =========================
    SIDEBAR (DESKTOP)
 ========================= */
+
 .sidebar{
     width:70px;
     background:#ffffff;
-    border-right:1px solid #e8ddd1;
+    border-right:1px solid #e6e6e6;
     display:flex;
     flex-direction:column;
     align-items:center;
     padding:15px 0;
-    gap:18px;
+    gap:20px;
 }
 
 .icon{
-    width:48px;
-    height:48px;
+    width:40px;
+    height:40px;
     display:flex;
-    justify-content:center;
     align-items:center;
-    border-radius:14px;
+    justify-content:center;
+    border-radius:12px;
     cursor:pointer;
-    transition:all .3s ease;
+    transition:0.2s;
+    font-size:18px;
 }
 
 .icon:hover{
-    background:#f4ece4;
-}
-
-.icon.active{
-    background:#efe2d4;
-}
-
-.material-symbols-rounded{
-    font-size:28px;
-    color:#6b4b36;   /* lighter version of #3c2315 */
-    transition:.3s;
-}
-
-.icon:hover .material-symbols-rounded{
-    color:#3c2315;
-}
-
-.icon.active .material-symbols-rounded{
-    color:#3c2315;
+    background:#efefef;
 }
 
 /* =========================
@@ -241,29 +224,16 @@ body{
 
 <div class="app">
 
-   <div class="sidebar">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
 
-    <div class="icon active" title="Home">
-        <span class="material-symbols-rounded">home</span>
+        <div class="icon"><img href="icons/bell-16.ico"></div>
+        <div class="icon"><img href="icons/home-16.ico"></div>
+        <div class="icon">➕</div>
+        <div class="icon">📁</div>
+        <div class="icon">⚙️</div>
+
     </div>
-
-    <div class="icon" title="Notifications">
-        <span class="material-symbols-rounded">notifications</span>
-    </div>
-
-    <div class="icon" title="Upload">
-        <span class="material-symbols-rounded">add_circle</span>
-    </div>
-
-    <div class="icon" title="Gallery">
-        <span class="material-symbols-rounded">photo_library</span>
-    </div>
-
-    <div class="icon" title="Settings">
-        <span class="material-symbols-rounded">settings</span>
-    </div>
-
-</div>
 
     <!-- MAIN -->
     <div class="main">
