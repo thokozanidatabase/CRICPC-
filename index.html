@@ -76,40 +76,70 @@ body{
 }
 
 /* =========================
-   TOPBAR
+   TOPBAR (UPDATED)
 ========================= */
 
-   .topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+.topbar{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+
+    padding: 10px 20px;
+
+    background: #ffffff;
+    transition: background 0.3s ease;
+    border-bottom: 1px solid #e6e6e6;
 }
 
+/* scroll effect */
+.topbar.scrolled{
+    background: #3c2315;
+    border-bottom: none;
+}
+
+/* logo */
 .topbar .logo{
     display:flex;
     align-items:center;
+    flex-shrink: 0;
 }
+
 .topbar .logo img{
-    height:40px;
-    width:auto;
-    object-fit:fit;
-    display:block;
+    height: 38px;
+    width: auto;
+    display: block;
 }
+
+/* search */
 .search{
-    flex:1;
-    display:flex;
-    justify-content:center;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .search input{
-    width:60%;
-    max-width:700px;
-    padding:12px 18px;
-    border-radius:25px;
-    border:none;
-    background:#efefef;
-    outline:none;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    border: none;
+    background: #efefef;
+    outline: none;
+}
+
+/* dark mode search on scroll */
+.topbar.scrolled .search input{
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+.topbar.scrolled .search input::placeholder{
+    color: #ddd;
 }
 
 /* =========================
@@ -122,7 +152,6 @@ body{
     column-gap:15px;
 }
 
-/* responsive grid */
 @media(max-width:1400px){ .feed{ column-count:4; } }
 @media(max-width:1100px){ .feed{ column-count:3; } }
 @media(max-width:800px){ .feed{ column-count:2; } }
@@ -175,7 +204,7 @@ body{
 }
 
 /* =========================
-   MOBILE NAV (BOTTOM BAR)
+   MOBILE NAV
 ========================= */
 
 @media(max-width:768px){
@@ -184,12 +213,10 @@ body{
         flex-direction:column;
     }
 
-    /* TOPBAR MOBILE */
     .search input{
-        width:90%;
+        width:100%;
     }
 
-    /* MOVE SIDEBAR TO BOTTOM */
     .sidebar{
         position:fixed;
         bottom:0;
@@ -212,10 +239,8 @@ body{
     .icon{
         width:45px;
         height:45px;
-        font-size:18px;
     }
 
-    /* prevent content hiding behind bottom nav */
     .main{
         padding-bottom:70px;
     }
@@ -229,30 +254,27 @@ body{
 
 <div class="app">
 
-    <!-- LEFT SIDEBAR -->
+    <!-- SIDEBAR -->
     <div class="sidebar">
-
         <div class="icon">🛖</div>
         <div class="icon">🔔</div>
-     
-
     </div>
 
     <!-- MAIN -->
     <div class="main">
 
-        <!-- TOP BAR -->
-       <div class="topbar">
+        <!-- TOPBAR -->
+        <div class="topbar">
 
-    <div class="logo">
-        <img src="logo/cripc1.png" alt="CRIPC Logo">
-    </div>
+            <div class="logo">
+                <img src="logo/cripc1.png" alt="CRIPC Logo">
+            </div>
 
-    <div class="search">
-        <input type="text" placeholder="Search">
-    </div>
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
 
-    </div>
+        </div>
 
         <!-- FEED -->
         <div class="feed">
@@ -286,6 +308,18 @@ body{
     </div>
 
 </div>
+
+<script>
+window.addEventListener("scroll", function () {
+    const topbar = document.querySelector(".topbar");
+
+    if (window.scrollY > 10) {
+        topbar.classList.add("scrolled");
+    } else {
+        topbar.classList.remove("scrolled");
+    }
+});
+</script>
 
 </body>
 </html>
