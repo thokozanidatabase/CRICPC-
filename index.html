@@ -281,19 +281,21 @@ window.addEventListener("scroll", function () {
     }
 });
 
-/* DOWNLOAD FUNCTION */
 function downloadImage(btn) {
     const img = btn.parentElement.querySelector("img");
     const url = img.src;
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "cripc-image.jpg";
+
+    // dynamic filename
+    const name = url.split("/").pop();
+    a.download = name;
+
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 }
-
 </script>
 
    <script src="js/app.js"></script>
