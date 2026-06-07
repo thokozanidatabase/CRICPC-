@@ -1,35 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CRIPC NEXUS</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f1eb;
+    color:#3c2315;
+    overflow-x:hidden;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f5f1eb;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#da9b42;
+    border-radius:20px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:240px;
+    background:#693213;
+    color:white;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 25px rgba(0,0,0,0.2);
+}
+
+.logo{
+    text-align:left;
+    margin-bottom:30px;
+}
+
+.logo img{
+    width:150px;
+    max-width:100%;
+    height:auto;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.nav button{
+    padding:18px;
+    border:none;
+    background:none;
+    color:white;
+    text-align:left;
+    border-radius:18px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav button:hover{
+    background:#da9b42;
+    color:#3c2315;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    flex:1;
+    overflow-y:auto;
+    min-width:0;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    background:white;
+    padding:25px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #e6d6c4;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header h1{
+    font-size:clamp(22px, 3vw, 40px);
+    margin-bottom:5px;
+}
+
+.header p{
+    color:#8c6a4a;
+}
+
+.search-box input{
+    width:300px;
+    padding:15px 20px;
+    border-radius:16px;
+    border:1px solid #d8c1a5;
+    outline:none;
+    font-size:15px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    padding:40px;
+}
+
+/* =========================
+   CATEGORY SECTION
+========================= */
+
+.category-section{
+    margin-bottom:60px;
+}
+
+.category-title{
+    font-size:clamp(20px, 2.5vw, 32px);
+    margin-bottom:25px;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+    border:1px solid #eadac7;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card img,
+.card video{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    display:block;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card-content h3{
+    font-size:18px;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden{
+    display:none;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
 
-/* Large Tablets */
-@media (max-width: 1024px){
+/* Tablets */
+@media (max-width: 992px){
 
     .sidebar{
         width:200px;
         padding:20px;
     }
 
-    .header h1{
-        font-size:32px;
+    .search-box input{
+        width:220px;
     }
 
     .content{
-        padding:30px;
+        padding:25px;
     }
 
-    .search-box input{
-        width:250px;
+    .grid{
+        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
     }
 }
 
-
-/* Tablets */
+/* Mobile */
 @media (max-width: 768px){
-
-    body{
-        overflow:auto;
-    }
 
     .container{
         flex-direction:column;
@@ -43,11 +261,11 @@
 
     .logo{
         text-align:center;
-        margin-bottom:20px;
+        margin-bottom:15px;
     }
 
     .logo img{
-        width:120px;
+        width:100px;
     }
 
     .nav{
@@ -58,28 +276,17 @@
     }
 
     .nav button{
-        padding:12px 16px;
+        flex:1 1 45%;
+        text-align:center;
+        padding:12px;
         font-size:14px;
     }
 
     .header{
-        padding:20px;
         flex-direction:column;
         align-items:flex-start;
         gap:15px;
-    }
-
-    .header h1{
-        font-size:28px;
-    }
-
-    .header p{
-        font-size:14px;
-        line-height:1.5;
-    }
-
-    .search-box{
-        width:100%;
+        padding:20px;
     }
 
     .search-box input{
@@ -90,78 +297,79 @@
         padding:20px;
     }
 
-    .category-title{
-        font-size:26px;
-    }
-
     .grid{
-        grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-    }
-
-    .card img,
-    .card video{
-        height:200px;
+        grid-template-columns:1fr;
     }
 }
 
-
-/* Mobile Phones */
+/* Small phones */
 @media (max-width: 480px){
 
-    .sidebar{
-        padding:10px;
-    }
-
-    .logo img{
-        width:100px;
-    }
-
-    .nav{
-        gap:8px;
-    }
-
     .nav button{
-        flex:1 1 calc(50% - 8px);
-        text-align:center;
-        padding:10px;
+        flex:1 1 100%;
         font-size:13px;
-    }
-
-    .header{
-        padding:15px;
     }
 
     .header h1{
-        font-size:24px;
-    }
-
-    .header p{
-        font-size:13px;
-    }
-
-    .content{
-        padding:15px;
-    }
-
-    .category-title{
-        font-size:22px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-        gap:15px;
-    }
-
-    .card img,
-    .card video{
-        height:180px;
+        font-size:20px;
     }
 
     .card-content{
         padding:15px;
     }
-
-    .card-content h3{
-        font-size:16px;
-    }
 }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <img src="logo/cripc1.png" alt="Logo">
+        </div>
+
+        <nav class="nav">
+            <button onclick="showSection('images')">Images</button>
+            <button onclick="showSection('videos')">Videos</button>
+            <button onclick="showSection('designs')">Designs</button>
+            <button onclick="showSection('banners')">Banners</button>
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="header">
+            <div>
+                <h1>CRIPC NEXUS</h1>
+                <p>Central digital media platform</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="Search here...">
+            </div>
+        </header>
+
+        <section class="content">
+
+            <div id="images"></div>
+            <div id="videos" class="hidden"></div>
+            <div id="designs" class="hidden"></div>
+            <div id="banners" class="hidden"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
