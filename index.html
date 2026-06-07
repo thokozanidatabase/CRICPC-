@@ -35,7 +35,7 @@ body{
 }
 
 /* =========================
-   SIDEBAR (DESKTOP)
+   SIDEBAR
 ========================= */
 
 .sidebar{
@@ -66,7 +66,7 @@ body{
 }
 
 /* =========================
-   MAIN AREA
+   MAIN
 ========================= */
 
 .main{
@@ -76,7 +76,7 @@ body{
 }
 
 /* =========================
-   TOPBAR (UPDATED)
+   TOPBAR
 ========================= */
 
 .topbar{
@@ -86,7 +86,6 @@ body{
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     gap: 15px;
 
     padding: 10px 20px;
@@ -96,54 +95,40 @@ body{
     border-bottom: 1px solid #e6e6e6;
 }
 
-/* scroll effect */
 .topbar.scrolled{
     background:#896742;
-    border-bottom: none;
-}
-
-/* logo */
-.topbar .logo{
-    display:flex;
-    align-items:center;
-    flex-shrink: 0;
+    border-bottom:none;
 }
 
 .topbar .logo img{
-    height: 38px;
-    width: auto;
-    display: block;
+    height:38px;
 }
 
-/* search */
 .search{
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
+    flex:1;
 }
 
 .search input{
-    width: 100%;
-    max-width: 500px;
-    padding: 10px 16px;
-    border-radius: 25px;
-    border: none;
-    background: #efefef;
-    outline: none;
+    width:100%;
+    max-width:500px;
+    padding:10px 16px;
+    border-radius:25px;
+    border:none;
+    background:#efefef;
+    outline:none;
 }
 
-/* dark mode search on scroll */
 .topbar.scrolled .search input{
-    background: rgba(255,255,255,0.15);
-    color: #fff;
+    background:rgba(255,255,255,0.15);
+    color:#fff;
 }
 
 .topbar.scrolled .search input::placeholder{
-    color: #ddd;
+    color:#ddd;
 }
 
 /* =========================
-   FEED (MASONRY)
+   FEED
 ========================= */
 
 .feed{
@@ -181,40 +166,41 @@ body{
     display:block;
 }
 
-.save{
-    position:absolute;
-    top:10px;
-    right:10px;
-    background:#e60023;
-    color:#fff;
-    padding:8px 12px;
-    border-radius:20px;
-    font-size:12px;
-    opacity:0;
-    transition:0.3s;
-}
-
-.card:hover .save{
-    opacity:1;
-}
-
 .caption{
     padding:10px;
     font-size:14px;
 }
 
+/* DOWNLOAD BUTTON */
+.download{
+    position:absolute;
+    top:10px;
+    right:10px;
+
+    background:#e60023;
+    color:#fff;
+
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:12px;
+
+    cursor:pointer;
+    opacity:0;
+    transition:0.3s;
+}
+
+.card:hover .download{
+    opacity:1;
+}
+
 /* =========================
-   MOBILE NAV
+   MOBILE
 ========================= */
 
 @media(max-width:768px){
 
     .app{
         flex-direction:column;
-    }
-
-    .search input{
-        width:100%;
     }
 
     .sidebar{
@@ -230,15 +216,10 @@ body{
         justify-content:space-around;
         align-items:center;
 
-        border-right:none;
         border-top:1px solid #e6e6e6;
+        border-right:none;
 
         z-index:1000;
-    }
-
-    .icon{
-        width:45px;
-        height:45px;
     }
 
     .main{
@@ -256,7 +237,7 @@ body{
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-        <div class="icon">🛖</div>
+        <div class="icon">🏠</div>
         <div class="icon">🔔</div>
     </div>
 
@@ -280,115 +261,21 @@ body{
         <div class="feed">
 
             <div class="card">
-                <div class="save">Download</div>
+                <div class="download" onclick="downloadImage(this)">Download</div>
                 <img src="https://i.pinimg.com/736x/xx.jpg">
                 <div class="caption">Creative sketch artwork</div>
             </div>
 
             <div class="card">
-                <div class="save">Download</div>
+                <div class="download" onclick="downloadImage(this)">Download</div>
                 <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Dark textured background design</div>
+                <div class="caption">Dark textured background</div>
             </div>
 
             <div class="card">
-                <div class="save">Download</div>
+                <div class="download" onclick="downloadImage(this)">Download</div>
                 <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Public speaker event photo</div>
-            </div>
-
-            <div class="card">
-                <div class="save">Download</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-  <div class="card">  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img sr  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>c="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>  <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>
-              <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>                 <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>
-             <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>
-             <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
-            </div>
-             <div class="card">
-                <div class="save">Save</div>
-                <img src="https://i.pinimg.com/736x/xx.jpg">
-                <div class="caption">Abstract digital art figure</div>
+                <div class="caption">Public speaker event</div>
             </div>
 
         </div>
@@ -398,15 +285,30 @@ body{
 </div>
 
 <script>
+
+/* TOPBAR SCROLL EFFECT */
 window.addEventListener("scroll", function () {
     const topbar = document.querySelector(".topbar");
-
     if (window.scrollY > 10) {
         topbar.classList.add("scrolled");
     } else {
         topbar.classList.remove("scrolled");
     }
 });
+
+/* DOWNLOAD FUNCTION */
+function downloadImage(btn) {
+    const img = btn.parentElement.querySelector("img");
+    const url = img.src;
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "cripc-image.jpg";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
 </script>
 
 </body>
